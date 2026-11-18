@@ -6,12 +6,13 @@ A MATLAB pipeline that finds the number plate in a car photo and crops it, using
 
 #### Course concepts used - 
 1. Digital image fundamentals: bilinear interpolation (resize), RGB to grayscale, RGB to HSV, 8-connected neighbourhood
-2. Enhancement and restoration: 3x3 median filter, CLAHE, Sobel vertical-edge convolution, top-hat filtering, adaptive thresholding
-3. Morphology and colour: closing, opening, hole filling, small-object removal, connected components and region properties, HSV yellow detection
+2. Enhancement and restoration: 3x3 median filter, CLAHE, vertical-gradient and Sobel edge filtering, Otsu (graythresh) and local adaptive thresholding
+3. Morphology and colour: closing, opening, dilation, hole filling, small-object removal, connected components and region properties, HSV yellow detection
 
 #### Additional concepts used -
-1. Local-contrast character-transition test (Gaussian-smoothed local mean) to reject plate-shaped regions with no text
-2. Combined candidate score (transitions x edge density x yellow fraction x position weight)
+1. Local edge-density map (averaging filter over vertical edges that coincide with dark text) to find character-rich regions
+2. Local-contrast character-transition test (Gaussian-smoothed local mean) to reject plate-shaped regions with no text
+3. Combined candidate score (transitions x edge density x yellow fraction x position weight)
    
 #### Dataset - 
 10 vehicle photos collected from Google Images (publicly available images from the web), used for testing only. No training data is used. Inputs are in `data/`.
@@ -48,7 +49,7 @@ Open `number_plate_detection.m` in MATLAB and run it. Pick an image from `data/`
 In image 10 the plate is very small in the frame and only part of it was cropped.
 
 ### References:
-1. MathWorks, Image Processing Toolbox documentation (imresize, rgb2hsv, medfilt2, adapthisteq, imfilter, imtophat, imbinarize, bwconncomp, regionprops): https://www.mathworks.com/help/images/
+1. MathWorks, Image Processing Toolbox documentation (imresize, rgb2hsv, medfilt2, adapthisteq, imfilter, imdilate, adaptthresh, graythresh, imbinarize, bwconncomp, regionprops): https://www.mathworks.com/help/images/
 2. Digital Image Processing (UE24EC342AC1) course material, PES University
    
 ### Limitations and Future Work:
