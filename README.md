@@ -14,7 +14,7 @@ A MATLAB pipeline that finds the number plate in a car photo and crops it, using
 2. Combined candidate score (transitions x edge density x yellow fraction x position weight)
    
 #### Dataset - 
-10 vehicle photos used for testing (add source / how collected here). Inputs are in `data/`.
+10 vehicle photos collected from Google Images (publicly available images from the web), used for testing only. No training data is used. Inputs are in `data/`.
 
 #### Novelty - 
 1. Two independent cues (yellow colour and character texture), so both yellow and white plates can be found
@@ -48,7 +48,8 @@ Open `number_plate_detection.m` in MATLAB and run it. Pick an image from `data/`
 In image 10 the plate is very small in the frame and only part of it was cropped.
 
 ### References:
-1. (add references used)
+1. MathWorks, Image Processing Toolbox documentation (imresize, rgb2hsv, medfilt2, adapthisteq, imfilter, imtophat, imbinarize, bwconncomp, regionprops): https://www.mathworks.com/help/images/
+2. Digital Image Processing (UE24EC342AC1) course material, PES University
    
 ### Limitations and Future Work:
 * Thresholds are fixed, so very different lighting may need re-tuning.
